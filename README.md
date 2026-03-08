@@ -1,4 +1,4 @@
-![SQL Toolbox Banner](docs/sql-toolbox-banner.png)
+![SQL Toolbox Banner](https://github.com/mmarcec/sql-toolbox/tree/main/sql-toolbox/DOCS/sql-toolbox-banner.png)
 # SQL Toolbox
 
 A practical SQL Server performance diagnostic toolkit built from real production troubleshooting.
@@ -169,4 +169,4 @@ understand performance problems quickly.
 
 ## Example HTML Report
 
-![SQL Toolbox Report](docs/sqltoolbox-report.png)
+![SQL Toolbox Report](https://github.com/mmarcec/sql-toolbox/tree/main/sql-toolbox/DOCS/sqltoolbox-report.png)
