@@ -1,4 +1,4 @@
-![SQL Toolbox Banner](https://raw.githubusercontent.com/mmarcec/sql-toolbox/main/DOCS/sql-toolbox-banner.png)
+![SQL Toolbox Banner](sql-toolbox/DOCS/sql-toolbox-banner.png)
 
 # SQL Toolbox
 
