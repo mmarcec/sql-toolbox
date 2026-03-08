@@ -1,4 +1,5 @@
 ![SQL Toolbox Banner](DOCS/sql-toolbox-banner.png)
+
 # SQL Toolbox
 
 A practical SQL Server performance diagnostic toolkit built from real production troubleshooting.
