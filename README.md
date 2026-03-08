@@ -170,4 +170,4 @@ understand performance problems quickly.
 
 ## Example HTML Report
 
-![SQL Toolbox Report](DOCS/sqltoolbox-report.png)
+![SQL Toolbox Report](sql-toolbox/DOCS/sqltoolbox-report.png)
