@@ -14,4 +14,4 @@ It includes:
 - Documentation and usage guides
 
 👉 Get SQL Toolbox PRO here:  
-[Buy SQL Toolbox PRO](LINK_TO_GUMROAD)
+[Buy SQL Toolbox PRO]https://mariovista01.gumroad.com/l/SQLToolBox_PRO
