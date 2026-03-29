@@ -61,7 +61,7 @@ Find the most expensive queries in the plan cache.
 * Query text included
 * Quick optimization targets
 
-![Top Slow Queries](sql-tolbox/DOCS/images/topslowqueries.png)
+![Top Slow Queries](sql-toolbox/DOCS/images/topslowqueries.png)
 
 ---
 
