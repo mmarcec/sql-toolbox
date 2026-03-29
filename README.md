@@ -9,228 +9,207 @@
 ![Maintenance](https://img.shields.io/badge/status-active_development-brightgreen)
 ![Made for](https://img.shields.io/badge/for-DBA%20%7C%20Developers-purple)
 
-A practical SQL Server performance diagnostic toolkit built from real production troubleshooting.
+# 🚀 SQL Server Performance Toolkit
 
-Designed for developers and DBAs who need fast answers when a SQL Server database becomes slow.
+> When a database is slow, you need answers fast — not guesswork.
 
----
+A lightweight **T-SQL diagnostic toolkit** that helps you quickly identify:
 
-## What is SQL Toolbox?
+* What SQL Server is waiting on
+* Which queries are causing the problem
+* Whether blocking or deadlocks are involved
 
-SQL Toolbox is a collection of SQL Server diagnostic scripts that help identify performance problems quickly.
-
-Typical issues it helps investigate:
-
-- slow SQL Server performance
-- blocking sessions
-- missing indexes
-- long running queries
-- database health problems
-- performance regressions
-
-The goal is simple:
-
-When a database is slow, developers should be able to find the root cause in minutes — not hours.
+No agents. No setup. Just run and diagnose.
 
 ---
 
-## Try it in 30 seconds
-
-1. Download the installation script  
-2. Run it in your SQL Server instance  
-3. Execute:
+## ⚡ What you get in 30 seconds
 
 ```sql
-EXEC SQLToolbox.RunAll;
+USE SQLToolbox;
+
+EXEC SQLToolbox.WaitStatsSummary;
+EXEC SQLToolbox.TopSlowQueries;
 ```
 
-The script generates a quick diagnostic overview including:
+→ Instantly see:
 
-- blocking sessions
-- missing indexes
-- slow queries
-- database health indicators
-
-Works on **SQL Server 2016+**  
-Tested on **SQL Server 2016–2022**  
-Runs entirely in **T-SQL** with no external dependencies.
+* Root cause (wait stats)
+* Problem queries
+* Where to investigate next
 
 ---
 
-## Example HTML Report
+## 🧰 Included Tools (Community Edition)
 
-![SQL Toolbox Report](sql-toolbox/DOCS/sqltoolbox-report.png)
+### 🧠 WaitStatsSummary
 
----
+Identify what SQL Server is actually waiting on.
 
-## Features
+* Detect locking, IO, CPU pressure
+* Includes interpretation and next steps
 
-SQL Toolbox Community Edition includes:
-
-- SQL Server performance diagnostic scripts
-- server-wide database scan
-- missing index impact analysis
-- blocking session detection
-- slow query analysis
-- database health checks
-
-The toolkit runs entirely in **T-SQL**.
-
-No agents.  
-No services.  
-No external dependencies.
+![Wait Stats](sql-toolbox/DOCS/images/waitstats.png)
 
 ---
 
-## Example Usage
+### 🔍 TopSlowQueries
 
-Run the main diagnostic procedure:
+Find the most expensive queries in the plan cache.
+
+* CPU, duration, reads
+* Query text included
+* Quick optimization targets
+
+![Top Slow Queries](sql-tolbox/DOCS/images/topslowqueries.png)
+
+---
+
+### 🚧 BlockingMonitor
+
+See active blocking chains in real time.
+
+* Who is blocking who
+* Session details
+* Running statements
+
+---
+
+### 💥 DeadlockDetector
+
+Read deadlock graphs from `system_health`.
+
+* Latest deadlocks
+* XML output for deep analysis
+
+---
+
+### ⚡ LivePerformanceAnalyzer (Light)
+
+Quick snapshot of:
+
+* Active requests
+* Top CPU queries
+
+![Live Performance](sql-toolbox/DOCS/images/liveperformance.png)
+
+---
+
+## 🧠 Recommended Workflow
+
+When something is slow:
+
+1. **WaitStatsSummary** → identify problem type
+2. **TopSlowQueries** → find expensive queries
+3. **BlockingMonitor** → check contention
+4. **LivePerformanceAnalyzer** → confirm current activity
+
+Or run:
+
+```text
+EXAMPLES/basic_workflow.sql
+```
+
+---
+
+## 🟢 Community vs 🔴 PRO
+
+| Feature                              | Community | PRO |
+| ------------------------------------ | --------- | --- |
+| Wait stats                           | ✔         | ✔   |
+| Slow queries                         | ✔         | ✔   |
+| Blocking & deadlocks                 | ✔         | ✔   |
+| Live diagnostics                     | ✔         | ✔   |
+| One-command full analysis (`RunAll`) | ❌         | ✔   |
+| HTML report                          | ❌         | ✔   |
+| Health score                         | ❌         | ✔   |
+| Historical tracking                  | ❌         | ✔   |
+| Automation (SQL Agent)               | ❌         | ✔   |
+
+---
+
+## 🚀 SQL Toolbox PRO
+
+If you find yourself running multiple scripts manually every time…
+
+SQL Toolbox PRO turns this into a **complete diagnostic system**:
+
+* 🔥 One-command full analysis (`RunAll`)
+* 📊 HTML performance report
+* 🧠 Health score
+* 📈 Historical tracking
+* ⚙️ Automation support
+
+👉 Save time. Stop guessing. Diagnose faster.
+
+👉 **Get PRO version:** https://mariovista01.gumroad.com/l/SQLToolBox_PRO+
+
+---
+
+## ⚙️ Installation
+
+Run:
 
 ```sql
-EXEC SQLToolbox.RunAll;
+INSTALL/10_SQLToolbox_Community_INSTALL.sql
 ```
 
-This performs a structured diagnostic scan and highlights the most important performance issues.
-
----
-
-## Typical Use Cases
-
-SQL Toolbox helps when:
-
-- a SQL Server database suddenly becomes slow
-- blocking chains appear in production
-- performance degrades after deployment
-- you want to perform a quick SQL Server health check
-- you need a fast diagnostic overview of a server
-
----
-
-## SQL Server Performance Diagnostic Scripts
-
-SQL Toolbox is designed to help developers and DBAs quickly identify performance issues.
-
-It can be used for:
-
-- SQL Server performance troubleshooting
-- database health checks
-- missing index analysis
-- blocking session detection
-- slow query diagnostics
-
----
-
-## SQL Server Health Check
-
-SQL Toolbox can also be used as a lightweight SQL Server health check toolkit.
-
-Run the full scan:
+Then:
 
 ```sql
-EXEC SQLToolbox.RunAll;
-```
+USE SQLToolbox;
 
-The scan highlights:
-
-- missing indexes
-- blocking sessions
-- slow queries
-- database performance issues
-
----
-
-## SQL Server Troubleshooting
-
-SQL Toolbox is useful when:
-
-- a SQL Server database becomes slow
-- blocking chains appear in production
-- performance degrades after deployment
-- you need a quick diagnostic overview of a server
-
----
-
-## Installation
-
-Run the installation script included in the repository:
-
-```
-SQLToolbox_INSTALL.sql
-```
-
-After installation run:
-
-```sql
-EXEC SQLToolbox.RunAll;
+EXEC SQLToolbox.WaitStatsSummary;
 ```
 
 ---
 
-## Community vs PRO Version
+## 📁 Repository Structure
 
-The Community Edition provides core diagnostic scripts.
-
-The **PRO version** adds automation, reporting and production-ready workflows.
-
-| Feature | Community | PRO |
-|-------|-------|-------|
-| Core diagnostic scripts | ✔ | ✔ |
-| Missing index analysis | ✔ | ✔ |
-| Blocking detection | ✔ | ✔ |
-| Slow query analysis | ✔ | ✔ |
-| Structured installer | – | ✔ |
-| HTML performance report | – | ✔ |
-| SQL Agent automation | – | ✔ |
-| Performance history | – | ✔ |
-| Advanced diagnostics | – | ✔ |
-
-👉 Available here:  
-[SQL Toolbox PRO](https://mariovista01.gumroad.com/l/SQLToolBox_PRO)
-
----
-
-## When to Use the PRO Version
-
-The Community Edition is perfect for quick diagnostics.
-
-You might want the PRO version if you need:
-
-- automated performance scans
-- structured installation
-- HTML performance reports
-- SQL Agent job automation
-- extended diagnostic modules
-
-The PRO version builds on the same core scripts but adds automation and production-ready workflows.
+```text
+sql-toolbox/
+│
+├── INSTALL/
+│   └── 10_SQLToolbox_Community_INSTALL.sql
+│
+├── src/
+│   ├── WaitStatsSummary.sql
+│   ├── TopSlowQueries.sql
+│   ├── BlockingMonitor.sql
+│   ├── DeadlockDetector.sql
+│   └── LivePerformanceAnalyzer.sql
+│
+├── EXAMPLES/
+│   └── basic_workflow.sql
+│
+└── README.md
+```
 
 ---
 
-## Roadmap
+## 🛣️ Roadmap
 
-SQL Toolbox is actively developed.
-
-Planned improvements include:
-
-- smarter index advisor
-- Query Store integration
-- improved HTML reporting
-- extended performance diagnostics
+* Query Store integration
+* Backup status checks
+* Extended performance insights
+* More automation options
 
 ---
 
-## Support the Project
+## ⭐ Support
 
-If you find this project useful:
+If you find this useful:
 
-⭐ Star the repository  
-🛠 Try the PRO version
+* ⭐ Star the repo
+* 💬 Share feedback
+* 🚀 Upgrade to PRO
 
 ---
 
-## Philosophy
+## 📄 License
 
-SQL Toolbox was built from real production troubleshooting experience.
+MIT (Community Edition)
 
-The focus is simple:
+---
 
-Provide practical SQL Server diagnostic tools that help developers understand performance problems quickly.
+> This is the toolkit I use when production is slow and I need answers immediately.
