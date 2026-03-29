@@ -7,6 +7,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Maintenance](https://img.shields.io/badge/status-active_development-brightgreen)
+![Made for](https://img.shields.io/badge/for-DBA%20%7C%20Developers-purple)
 
 A practical SQL Server performance diagnostic toolkit built from real production troubleshooting.
 
