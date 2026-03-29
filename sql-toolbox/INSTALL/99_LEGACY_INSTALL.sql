@@ -478,6 +478,51 @@ BEGIN
 END
 GO
 
+
+/*
+SQL Toolbox - Community Edition
+Module: Wait stats summary
+Purpose: "What was waiting in execution  ?"
+*/
+CREATE OR ALTER PROCEDURE SQLToolbox.WaitStatsSummary
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    ;WITH Waits AS (
+        SELECT 
+            wait_type,
+            wait_time_ms / 1000.0 AS wait_time_s,
+            100.0 * wait_time_ms / SUM(wait_time_ms) OVER() AS pct,
+            ROW_NUMBER() OVER (ORDER BY wait_time_ms DESC) AS rn
+        FROM sys.dm_os_wait_stats
+        WHERE wait_type NOT IN (
+            'CLR_SEMAPHORE','LAZYWRITER_SLEEP','RESOURCE_QUEUE','SLEEP_TASK',
+            'SLEEP_SYSTEMTASK','SQLTRACE_BUFFER_FLUSH','WAITFOR','LOGMGR_QUEUE',
+            'CHECKPOINT_QUEUE','REQUEST_FOR_DEADLOCK_SEARCH','XE_TIMER_EVENT',
+            'BROKER_TO_FLUSH','BROKER_TASK_STOP','CLR_MANUAL_EVENT',
+            'CLR_AUTO_EVENT','DISPATCHER_QUEUE_SEMAPHORE','FT_IFTS_SCHEDULER_IDLE_WAIT',
+            'XE_DISPATCHER_WAIT','XE_DISPATCHER_JOIN','BROKER_EVENTHANDLER',
+            'TRACEWRITE','FT_IFTSHC_MUTEX','SQLTRACE_INCREMENTAL_FLUSH_SLEEP',
+            'DIRTY_PAGE_POLL','SP_SERVER_DIAGNOSTICS_SLEEP'
+        )
+    )
+    SELECT TOP 10
+        wait_type,
+        wait_time_s,
+        CAST(pct AS DECIMAL(5,2)) AS pct,
+        CASE 
+            WHEN wait_type LIKE 'LCK%' THEN 'Blocking / Lock contention'
+            WHEN wait_type LIKE 'PAGEIOLATCH%' THEN 'IO / Missing indexes / Slow storage'
+            WHEN wait_type IN ('CXPACKET','CXCONSUMER') THEN 'Parallelism'
+            WHEN wait_type = 'SOS_SCHEDULER_YIELD' THEN 'CPU pressure'
+            WHEN wait_type LIKE 'WRITELOG' THEN 'Transaction log bottleneck'
+            ELSE 'General / Investigate'
+        END AS interpretation
+    FROM Waits
+    WHERE rn <= 10
+    ORDER BY wait_time_s DESC;
+END
 /*
 SQL Toolbox - Community Edition
 Module: RunAll (orchestrator)
@@ -487,13 +532,19 @@ CREATE OR ALTER PROCEDURE SQLToolbox.RunAll
 AS
 BEGIN
     SET NOCOUNT ON;
+	
 
     PRINT '===================================================';
     PRINT 'SQL TOOLBOX – RUN ALL (COMMUNITY)';
     PRINT 'Database: ' + DB_NAME();
     PRINT 'Time: ' + CONVERT(varchar(19), GETDATE(), 120);
     PRINT '===================================================';
-
+	
+	PRINT '=== WAIT STATS SUMMARY ===';
+	EXEC SQLToolbox.WaitStatsSummary;
+	PRINT ' ';
+	
+	
     PRINT '';
     PRINT '--- INSTANT DIAGNOSTIC ---';
     EXEC SQLToolbox.InstantDiagnostic;

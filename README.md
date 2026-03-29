@@ -1,6 +1,7 @@
 ![SQL Toolbox Banner](sql-toolbox/DOCS/sql-toolbox-banner.png)
 
 # SQL Toolbox
+
 ![SQL Server](https://img.shields.io/badge/SQL_Server-Diagnostics-blue)
 ![T-SQL](https://img.shields.io/badge/T--SQL-Toolkit-blue)
 ![Version](https://img.shields.io/badge/version-1.0.0-orange)
@@ -29,6 +30,35 @@ Typical issues it helps investigate:
 The goal is simple:
 
 When a database is slow, developers should be able to find the root cause in minutes — not hours.
+
+---
+
+## Try it in 30 seconds
+
+1. Download the installation script  
+2. Run it in your SQL Server instance  
+3. Execute:
+
+```sql
+EXEC SQLToolbox.RunAll;
+```
+
+The script generates a quick diagnostic overview including:
+
+- blocking sessions
+- missing indexes
+- slow queries
+- database health indicators
+
+Works on **SQL Server 2016+**  
+Tested on **SQL Server 2016–2022**  
+Runs entirely in **T-SQL** with no external dependencies.
+
+---
+
+## Example HTML Report
+
+![SQL Toolbox Report](sql-toolbox/DOCS/sqltoolbox-report.png)
 
 ---
 
@@ -75,6 +105,50 @@ SQL Toolbox helps when:
 
 ---
 
+## SQL Server Performance Diagnostic Scripts
+
+SQL Toolbox is designed to help developers and DBAs quickly identify performance issues.
+
+It can be used for:
+
+- SQL Server performance troubleshooting
+- database health checks
+- missing index analysis
+- blocking session detection
+- slow query diagnostics
+
+---
+
+## SQL Server Health Check
+
+SQL Toolbox can also be used as a lightweight SQL Server health check toolkit.
+
+Run the full scan:
+
+```sql
+EXEC SQLToolbox.RunAll;
+```
+
+The scan highlights:
+
+- missing indexes
+- blocking sessions
+- slow queries
+- database performance issues
+
+---
+
+## SQL Server Troubleshooting
+
+SQL Toolbox is useful when:
+
+- a SQL Server database becomes slow
+- blocking chains appear in production
+- performance degrades after deployment
+- you need a quick diagnostic overview of a server
+
+---
+
 ## Installation
 
 Run the installation script included in the repository:
@@ -83,7 +157,7 @@ Run the installation script included in the repository:
 SQLToolbox_INSTALL.sql
 ```
 
-After installation:
+After installation run:
 
 ```sql
 EXEC SQLToolbox.RunAll;
@@ -91,32 +165,26 @@ EXEC SQLToolbox.RunAll;
 
 ---
 
-## SQL Server Performance Diagnostic Scripts
-
-SQL Toolbox was created as a practical toolkit for SQL Server performance troubleshooting.
-
-It can help identify:
-
-- missing indexes
-- blocking sessions
-- slow queries
-- database health issues
-- potential performance bottlenecks
-
----
-
 ## Community vs PRO Version
 
 The Community Edition provides core diagnostic scripts.
 
-The **PRO version** adds:
+The **PRO version** adds automation, reporting and production-ready workflows.
 
-- structured installer
-- automation via SQL Agent jobs
-- advanced index analysis
-- HTML performance reports
-- performance history tracking
-- utility framework for maintenance tasks
+| Feature | Community | PRO |
+|-------|-------|-------|
+| Core diagnostic scripts | ✔ | ✔ |
+| Missing index analysis | ✔ | ✔ |
+| Blocking detection | ✔ | ✔ |
+| Slow query analysis | ✔ | ✔ |
+| Structured installer | – | ✔ |
+| HTML performance report | – | ✔ |
+| SQL Agent automation | – | ✔ |
+| Performance history | – | ✔ |
+| Advanced diagnostics | – | ✔ |
+
+👉 Available here:  
+[SQL Toolbox PRO](https://mariovista01.gumroad.com/l/SQLToolBox_PRO)
 
 ---
 
@@ -133,10 +201,6 @@ You might want the PRO version if you need:
 - extended diagnostic modules
 
 The PRO version builds on the same core scripts but adds automation and production-ready workflows.
-
-👉 PRO version available here:  
-[GUMROAD LINK](https://mariovista01.gumroad.com/l/SQLToolBox_PRO)
-
 
 ---
 
@@ -168,11 +232,4 @@ SQL Toolbox was built from real production troubleshooting experience.
 
 The focus is simple:
 
-Provide practical SQL Server diagnostic tools that help developers
-understand performance problems quickly.
-
----
-
-## Example HTML Report
-
-![SQL Toolbox Report](sql-toolbox/DOCS/sqltoolbox-report.png)
+Provide practical SQL Server diagnostic tools that help developers understand performance problems quickly.
