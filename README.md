@@ -1,4 +1,4 @@
-![SQL Toolbox Banner](sql-toolbox/DOCS/sql-toolbox-banner.png)
+
 
 # SQL Toolbox
 
@@ -142,7 +142,7 @@ SQL Toolbox PRO turns this into a **complete diagnostic system**:
 
 👉 Save time. Stop guessing. Diagnose faster.
 
-👉 **Get PRO version:** https://mariovista01.gumroad.com/l/SQLToolBox_PRO+
+👉 **Get PRO version:** https://mariovista01.gumroad.com/l/SQLToolBox_PRO
 
 ---
 
