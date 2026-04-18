@@ -1,3 +1,6 @@
+-- LEGACY INSTALLER
+-- Recommended installer:
+-- INSTALL/10_SQLToolbox_Community_INSTALL.sql
 /*
 SQL Toolbox - Community Edition (Installer)
 Creates schema + core procedures.
